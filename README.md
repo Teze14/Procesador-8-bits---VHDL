@@ -1,9 +1,9 @@
-🧠 Microprocesador de 8 bits en VHDL – Proyecto en DE10-Lite
+# 🧠 Microprocesador de 8 bits en VHDL – Proyecto en DE10-Lite
 Este proyecto consiste en el diseño, implementación y validación de un microprocesador de 8 bits completamente funcional desarrollado en VHDL y desplegado en la tarjeta DE10-Lite de Intel. El sistema simula una arquitectura tipo Von Neumann con instrucciones básicas de carga, almacenamiento, operaciones aritméticas, lógicas y control de flujo.
 
 ![image](https://github.com/user-attachments/assets/420fc236-c968-4d70-88b4-145fce4de277)
 
-📦 Estructura del Proyecto
+# 📦 Estructura del Proyecto
 El procesador está organizado jerárquicamente en los siguientes módulos principales:
 
 CPU: Unidad central de procesamiento, encargada de coordinar el data_path y control_unit.
@@ -24,7 +24,7 @@ puertos_salida: Registro de salida para mostrar resultados en LEDs u otras inter
 
 divisor_F: Divisor de frecuencia para desacoplar la velocidad del reloj de la FPGA.
 
-🔁 Flujo General
+# 🔁 Flujo General
 El PC envía una dirección de instrucción a mem_prog.
 
 La instrucción se carga en IR y es decodificada por control_unit.
@@ -33,14 +33,14 @@ Según la instrucción, se generan señales para leer/escribir datos desde memor
 
 Los resultados pueden almacenarse, usarse en otras instrucciones, o enviarse a un puerto de salida.
 
-🛠️ Plataforma
+# 🛠️ Plataforma
 Lenguaje: VHDL
 
 Software: Quartus Prime Lite Edition 18.1
 
 Plataforma: DE10-Lite (Intel FPGA)
 
-🚀 Funcionalidades Soportadas
+# 🚀 Funcionalidades Soportadas
 Instrucciones tipo: LOAD, STORE, ADD, SUB, AND, OR, XOR, INC, DEC, NOT
 
 Instrucciones de salto condicional e incondicional (JMP, JZ, JN, JC, etc.)
