@@ -1,0 +1,25 @@
+El módulo control_unit implementa la unidad de control del procesador mediante una máquina de estados finitos (FSM). Su función principal es interpretar la instrucción actual (desde el registro IR) y generar las señales de control necesarias para coordinar los registros, buses, memoria y ALU.
+
+🎯 Funcionalidad Clave:
+Ciclo de Instrucción dividido en fases: Fetch, Decode y Execute.
+
+Decodificación de instrucciones basada en el valor de IR.
+
+Generación de señales de control: como A_Load, B_Load, IR_Load, MAR_Load, PC_Inc, PC_Load, Bus1_Sel, Bus2_Sel, ALU_Sel, CCR_Load, y wr.
+
+🔁 Estados Implementados:
+Ciclo Fetch: Fetch0, Fetch1, Fetch2 — para obtener la instrucción desde memoria.
+
+Decodificación: DS (Decode State).
+
+Ejemplo de instrucciones soportadas:
+
+LOAD_INM_A, LOAD_DIR_A, STORE_B, ADD_AB, SUB_AB, XOR_AB, JMP, JZ, JC, entre otras.
+
+Saltos Condicionales: Evaluación de banderas N, Z, O, C (desde CCR_Result) para tomar decisiones de salto.
+
+⚙️ Integración:
+Este módulo se sincroniza con clk y responde a rst. Se conecta directamente al data_path y decide el comportamiento en cada ciclo de reloj.
+
+🧠 Detalles adicionales:
+La unidad está altamente modularizada, con estados explícitos para cada fase de cada instrucción, facilitando la depuración y ampliación del conjunto de instrucciones.
