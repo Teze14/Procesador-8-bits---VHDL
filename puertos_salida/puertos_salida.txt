@@ -1,0 +1,21 @@
+Este módulo gestiona los 16 puertos de salida del procesador, permitiendo almacenar y visualizar resultados mediante registros direccionables. Cada puerto corresponde a una dirección específica (de 0xF0 a 0xFF) y puede almacenar un byte (std_logic_vector(7 downto 0)).
+
+Entradas:
+clk: Señal de reloj para sincronización.
+
+rst: Reset síncrono que reinicia todos los puertos a cero.
+
+wr: Señal de escritura que habilita el almacenamiento del dato en el puerto.
+
+address: Dirección del puerto de salida (4 bits esperados).
+
+data_in: Dato de 8 bits a ser escrito en el puerto seleccionado.
+
+Salidas:
+p_out_00 a p_out_15: Salidas individuales de 8 bits conectadas a cada uno de los 16 puertos.
+
+Funcionamiento:
+Cuando la señal wr está activa, y se proporciona una dirección válida junto con data_in, el valor se almacena en el puerto de salida correspondiente. Esto permite que el procesador interactúe con dispositivos externos o LEDs conectados a los pines de salida.
+
+Ejemplo de uso:
+Para escribir el contenido del registro A en el puerto p_out_00, se usaría la instrucción STORE_A con dirección 0xF0.
