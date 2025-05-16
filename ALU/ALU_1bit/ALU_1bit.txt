@@ -1,0 +1,22 @@
+Este módulo implementa una Unidad Aritmético-Lógica de 1 bit, también conocida como bit-slice, la cual sirve como bloque básico para construir una ALU de múltiples bits (en este caso, 8).
+
+Entradas:
+A, B: Bits de entrada.
+
+NA, NB: Señales de negación de A y B (para implementar operaciones como resta o NOT).
+
+Cin: Bit de acarreo de entrada (útil para suma/resta).
+
+Sel: Vector de selección de 4 bits que define la operación a realizar.
+
+Salidas:
+S: Resultado de la operación.
+
+Co: Bit de acarreo de salida.
+
+Operaciones soportadas:
+Suma, resta, AND, OR, XOR
+
+Incremento, decremento, NOT de A y B
+
+Esta ALU de 1 bit es utilizada por el módulo ALU_8bits, replicándola 8 veces para procesar datos completos.
