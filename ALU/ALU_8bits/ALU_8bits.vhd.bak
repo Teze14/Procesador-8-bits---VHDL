@@ -1,0 +1,47 @@
+-- Jesus Emiliano García Jiménez 
+-- A01751766
+-- Archivo ALU 4 bits bit-slice
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ALU_8bits is 
+	port( A, B   : in std_logic_vector(7 downto 0);
+			NA, NB : in std_logic;
+			Ci     : in std_logic;
+			Sel   : in  std_logic_vector(5 downto 0);
+		   S      : out std_logic_vector(7 downto 0);
+			Co     : out std_logic);
+end entity;
+
+architecture RTL of ALU_8bits is
+	--declaramos componentes
+	
+	component ALU_1bit is 
+	port( A, B : in std_logic;
+			NA,NB   : in std_logic;
+			Cin   : in std_logic;
+			Sel   : in  std_logic_vector(5 downto 0);
+		   S    : out std_logic;
+			Co   : out std_logic);
+	end component;
+	
+	-- declaramos las señales necesarias
+	signal c: std_logic_vector(7 downto 0);
+	
+	begin
+			c(0) <= Ci;
+			
+			ALU0: ALU_1bit port map (A(0), B(0), NA, NB, c(0), Sel, S(0), c(1));
+			ALU1: ALU_1bit port map (A(1), B(1), NA, NB, c(1), Sel, S(1), c(2));
+			ALU2: ALU_1bit port map (A(2), B(2), NA, NB, c(2), Sel, S(2), c(3));
+			ALU3: ALU_1bit port map (A(3), B(3), NA, NB, c(3), Sel, S(3), c(4));
+			
+			ALU4: ALU_1bit port map (A(4), B(4), NA, NB, c(4), Sel, S(4), c(5));
+			ALU5: ALU_1bit port map (A(5), B(5), NA, NB, c(5), Sel, S(5), c(6));
+			ALU6: ALU_1bit port map (A(6), B(6), NA, NB, c(6), Sel, S(6), c(7));
+			ALU7: ALU_1bit port map (A(7), B(7), NA, NB, c(7), Sel, S(7), Co);
+			
+
+end architecture;
+

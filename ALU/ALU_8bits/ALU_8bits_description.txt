@@ -1,0 +1,3 @@
+Created on:lunes, abril 07, 2025
+Based on:ALU_1bit
+ALU 8 bits bit slice
