@@ -1,0 +1,32 @@
+El módulo ALU_8bits es una Unidad Aritmético-Lógica completa de 8 bits, construida a partir de 8 instancias del módulo ALU_1bit, conectadas en cascada para permitir propagación del acarreo.
+
+Entradas:
+A, B: Vectores de 8 bits para las entradas de datos.
+
+NA, NB: Señales de negación de A y B (para operaciones como resta o NOT).
+
+Ci: Acarreo de entrada inicial (usualmente 0 para suma, 1 para resta).
+
+Sel: Vector de selección de 4 bits para determinar la operación a realizar.
+
+Salidas:
+Suma: Resultado de 8 bits de la operación.
+
+flags: Vector de 4 bits con los siguientes indicadores:
+
+Bit 3: N (negativo)
+
+Bit 2: Z (cero)
+
+Bit 1: O (overflow)
+
+Bit 0: C (carry)
+
+Co: Acarreo final de la operación.
+
+Características:
+Permite operaciones aritméticas y lógicas estándar.
+
+Utiliza lógica condicional y manipulación de señales para optimizar el diseño.
+
+Facilita el control desde el data_path y control_unit.
