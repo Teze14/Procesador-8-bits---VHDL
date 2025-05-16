@@ -1,0 +1,39 @@
+El módulo memoria actúa como la interfaz unificada de memoria del procesador, integrando tres subsistemas clave:
+
+Memoria de programa (mem_prog)
+
+Memoria de datos (mem_datos)
+
+Puertos de entrada/salida (puertos_salida)
+
+Su diseño permite que el procesador acceda tanto a instrucciones como a datos y dispositivos periféricos usando un solo bus de direcciones.
+
+Entradas:
+clk: Señal de reloj.
+
+rst: Reset global del sistema.
+
+wr: Señal de escritura, activa cuando se desea almacenar un valor.
+
+address: Dirección de 8 bits proporcionada por el procesador.
+
+data_in: Datos que se desean escribir (cuando wr = '1').
+
+p_in_00 a p_in_15: 16 puertos de entrada de 8 bits cada uno, que representan entradas periféricas externas.
+
+Salidas:
+data_out: Valor de 8 bits leído desde la dirección especificada (ROM, RAM o puerto).
+
+p_out_00 a p_out_15: 16 puertos de salida de 8 bits cada uno, que representan salidas periféricas controladas por el procesador.
+
+Funcionamiento:
+Si la dirección es menor a 0x80, se accede a la memoria de programa (mem_prog).
+
+Si la dirección está en el rango 0x80 a 0xDF, se accede a la memoria de datos (mem_datos).
+
+Si la dirección está en el rango 0xE0 a 0xEF, se lee desde los puertos de entrada.
+
+Si la dirección está en el rango 0xF0 a 0xFF y wr = '1', se escribe en los puertos de salida.
+
+Rol en el procesador:
+Este módulo permite que la CPU acceda a todo el sistema de memoria y periféricos de manera transparente, delegando el direccionamiento a la lógica de multiplexado que selecciona la fuente o destino correcto.
