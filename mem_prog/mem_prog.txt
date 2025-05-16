@@ -1,0 +1,17 @@
+El módulo mem_prog representa la memoria de programa (ROM) del procesador. En ella se almacenan las instrucciones que el procesador ejecuta secuencialmente. Es de solo lectura y se inicializa con un contenido fijo mediante una señal interna (signal ROM).
+
+Entradas:
+clk: Señal de reloj para sincronización de lectura.
+
+address: Dirección de 7 bits que selecciona la instrucción a ser leída desde la ROM.
+
+Salidas:
+data_out: Instrucción de 8 bits correspondiente a la dirección dada.
+
+Funcionamiento:
+En cada ciclo de reloj, el procesador proporciona una dirección (PC → MAR → address), y la ROM devuelve la instrucción almacenada en esa dirección a través de data_out.
+
+No admite escritura. El contenido se define manualmente en el código VHDL.
+
+Aplicación:
+Este módulo contiene el programa que define el comportamiento del procesador. Cada instrucción es leída y ejecutada mediante el ciclo de máquina: fetch → decode → execute.
