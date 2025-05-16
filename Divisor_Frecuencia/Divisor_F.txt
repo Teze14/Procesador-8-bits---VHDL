@@ -1,0 +1,23 @@
+El módulo Divisor_F genera una señal de reloj más lenta a partir del reloj de 50 MHz de la tarjeta DE10-Lite, permitiendo ejecutar el procesador a una velocidad observable para efectos de depuración o interacción manual (por ejemplo, ver cómo cambian salidas en LEDs paso a paso).
+
+⚙️ Funcionalidad:
+Recibe como entrada una señal de reloj rápida (clk_in, típicamente 50 MHz) y un reset (rst).
+
+Genera como salida una señal de reloj dividida (clk_out) a una frecuencia más baja (por ejemplo, 25 MHz, 1 Hz, etc., según la configuración interna).
+
+🔌 Puertos:
+Entradas:
+
+clk_in: Reloj principal del sistema (50 MHz).
+
+rst: Señal de reinicio (activo en alto o bajo, según implementación).
+
+Salida:
+
+clk_out: Reloj dividido para sincronizar otros módulos (como el CPU).
+
+🛠️ Aplicación:
+Usado principalmente para desacoplar la velocidad del procesador respecto a la del reloj físico de la FPGA, facilitando el análisis de estados internos en pruebas prácticas.
+
+📦 Recomendación:
+Este divisor puede adaptarse fácilmente ajustando el contador interno si se requiere una frecuencia de reloj aún más lenta.
