@@ -1,0 +1,35 @@
+El módulo CPU representa la unidad central de procesamiento del sistema, integrando y coordinando los dos módulos fundamentales del procesador: el data_path y la control_unit. Sirve como el corazón lógico del procesador.
+
+🧠 Componentes internos:
+data_path: Maneja los registros, la ALU, los buses internos, y realiza las operaciones aritméticas/lógicas.
+
+control_unit: Implementa una máquina de estados finitos que genera las señales de control necesarias para la ejecución de instrucciones.
+
+🔌 Entradas y salidas:
+from_memory: Entrada de datos provenientes de la memoria externa.
+
+clk, rst: Señales de reloj y reinicio.
+
+address: Dirección que será enviada a memoria.
+
+to_memory: Dato que será escrito en memoria.
+
+wr: Señal de escritura a memoria.
+
+⚙️ Funcionalidad:
+Ejecuta instrucciones desde la memoria de programa en ciclos controlados por FSM.
+
+Genera señales de lectura/escritura hacia memoria de datos y puertos.
+
+Controla el flujo de datos entre registros y unidades operativas mediante buses internos.
+
+Soporta operaciones aritméticas, lógicas, de carga/almacenamiento y de salto.
+
+🔁 Flujo de ejecución:
+Fetch: Obtiene la instrucción de la memoria.
+
+Decode: Decodifica la instrucción en la FSM.
+
+Execute: Ejecuta la instrucción utilizando el data_path.
+
+Este módulo encapsula toda la lógica de procesamiento del sistema, facilitando su uso dentro de una arquitectura superior como Procesador o Procesador_fpga.
