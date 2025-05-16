@@ -1,0 +1,31 @@
+El módulo Procesador representa la unidad completa de procesamiento digital, integrando el módulo CPU con el subsistema de memoria, formando una arquitectura funcional de tipo Von Neumann.
+
+🧠 Componentes integrados:
+CPU: Unidad de control y camino de datos que interpreta y ejecuta instrucciones.
+
+memoria: Módulo que unifica memoria de programa, memoria de datos, puertos de entrada y salida.
+
+🔌 Entradas:
+clk, rst: Señales de reloj y reinicio.
+
+p_in_00 a p_in_15: Puertos de entrada de 8 bits para interacción externa (switches, sensores, etc.).
+
+🔌 Salidas:
+p_out_00 a p_out_15: Puertos de salida de 8 bits para comunicación externa (LEDs, displays, actuadores, etc.).
+
+⚙️ Funcionalidad:
+Ejecuta instrucciones almacenadas en la ROM (mem_prog) usando los datos en RAM o puertos.
+
+Puede realizar operaciones aritméticas, lógicas, de transferencia y de control de flujo.
+
+Permite leer entradas externas y controlar salidas programáticamente.
+
+🧩 Interconexión:
+La CPU se comunica con la memoria mediante señales de dirección (address), datos (to_memory, from_memory) y control (wr).
+
+La memoria enruta las direcciones adecuadamente entre ROM, RAM y puertos según el rango de dirección.
+
+🧪 Uso:
+Ideal para simular y probar instrucciones escritas manualmente, verificar operaciones básicas en puertos y cargar rutinas desde mem_prog.
+
+Este módulo es el corazón lógico del sistema completo y puede implementarse directamente en una FPGA o en simulaciones.
