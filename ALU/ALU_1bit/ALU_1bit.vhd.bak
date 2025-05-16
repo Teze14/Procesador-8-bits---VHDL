@@ -1,0 +1,47 @@
+-- Jesus Emiliano García Jiménez 
+-- A01751766
+-- Archivo ALU bit-slice 1 bit
+
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity ALU_1bit is 
+	port( A, B : in std_logic;
+			NA,NB   : in std_logic;
+			Cin   : in std_logic;
+			Sel   : in  std_logic_vector(5 downto 0);
+		   S    : out std_logic;
+			Co   : out std_logic);
+end entity;
+
+architecture RTL of ALU_1bit is
+	--declaramos componentes
+	
+	component HA is 
+		port( A, B: in std_logic; --definimos A, B como entradas "binarias"
+				S, Co:out std_logic);
+	end component;
+	
+	-- declaramos las señales necesarias
+	signal A_signal, B_signal, Ci_s : std_logic;
+	signal and_out, or_out, xor_out : std_logic;
+	signal sum1, sum2, c1, c2, notA : std_logic;
+	signal and_sel, or_sel, notA_sel, notB_sel, xor_sel, sum_sel : std_logic;
+	
+	begin
+			A_signal <= A xor NA;
+			B_signal <= B xor NB;
+			Ci_s <= NA or NB or Cin;
+			
+			HA1: HA port map (A_signal, B_signal, sum1, c1);
+			HA2: HA port map (sum1, Ci_s, sum2, c2);
+			Co <= c1 or c2;
+			
+			and_sel <= c1 and Sel(0);
+			notB_sel <= B_signal and Sel(1);
+			notA_sel <= A_signal and Sel(2);
+			xor_
+			
+			
+end architecture;
+
