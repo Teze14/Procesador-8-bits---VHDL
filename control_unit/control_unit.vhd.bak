@@ -1,0 +1,64 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity control_unit is
+	port ( clk, rst                            : in std_logic;
+			 CCR_Result                          : in std_logic_vector (3 downto 0);
+			 IR                                  : in std_logic_vector (7 downto 0);
+			 A_Load, B_Load, CCR_Load            : out std_logic;
+			 IR_Load, MAR_Load, PC_Load, PC_Inc  : out std_logic;
+			 ALU_Sel                             : out std_logic_vector (3 downto 0);
+			 Bus1_Sel, Bus2_Sel                  : out std_logic_vector (1 downto 0);
+			 wr                                  : out std_logic);
+end entity;
+
+architecture RTL of control_unit is
+	
+	Type FSM is ( IDLE, 
+						Fetch0, Fetch1, Fetch2, DS
+						Op86A, Op86B, Op86C,       				--LOAD_INM_A
+						Op87A, Op87B, Op87C,							--LOAD_INM_B
+						Op88A, Op88B, Op88C, Op88D, Op88E,		--LOAD_DIR_A
+						Op89A, Op89B, Op89C, Op89D, Op89E,		--LOAD_DIR_B
+						Op96A, Op96B, Op96C, Op96D,				--STORE_A
+						Op97A, Op97B, Op97C, Op97D,				--STORE_B
+						Op40,												--ADD_AB
+						Op41,												--SUB_AB
+						Op42,												--AND_AB
+						Op43,												--OR_AB
+						Op44,												--XOR_AB
+						
+						Op45,												--INC_A
+						Op46,												--INC_B
+						Op47,												--DEC_A
+						Op48,												--DEC_B
+						Op50,												--NOT_A
+						Op51,												--NOT_B
+						
+						Op20, Op20A, Op20B,							--JMP
+						Op21, Op21A, Op21B, Op21C              -- JN
+						Op22, Op22A, Op22B, Op22C             	-- JNN
+						Op23, Op23A, Op23B, Op23C            	-- JZ
+						Op24, Op24A, Op24B, Op24C           	-- JNZ
+						Op25, Op25A, Op25B, Op25C           	-- JOV
+						Op26, Op26A, Op26B, Op26C           	-- JNOV
+						Op27, Op27A, Op27B, Op27C           	-- JC
+						Op28, Op28A, Op28B, Op28C           	-- JNC
+	
+	);
+	
+	
+	signal EDO, EDOF : FSM;
+	signal N, Z, O, C: std_logic;
+	
+	begin	
+		N <= CCR_Result(3); -- BANDERA NEGATIVO
+		Z <= CCR_Result(2); -- BANDERA CERO
+		O <= CCR_Result(1); -- BANDERA OVERFLOW
+		C <= CCR_Result(0); -- BANDERA CARRY
+
+		
+		process (CLK, RST)
+			begin
+				if (RST = '0') then
+end architecture;
