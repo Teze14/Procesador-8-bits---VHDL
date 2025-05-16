@@ -1,0 +1,11 @@
+La ALU bit-slice es un diseño modular y escalable de una unidad aritmético-lógica que opera sobre un único bit. Este enfoque divide la ALU de N bits (en este caso, 8 bits) en N unidades idénticas de 1 bit, conectadas entre sí en cascada. Cada slice maneja una parte del cálculo y transmite el bit de acarreo a la siguiente posición, emulando el comportamiento de una ALU completa.
+
+Este diseño permite:
+
+Una estructura reutilizable y jerárquica, ideal para diseños digitales en VHDL.
+
+Simulación precisa de operaciones como suma y resta, bit a bit, mediante el uso de señales como NA, NB, y Cin.
+
+Implementación de operaciones lógicas y aritméticas (AND, OR, XOR, suma, resta, incremento, decremento, negación) de forma compacta.
+
+La arquitectura bit-slice es particularmente útil en sistemas embebidos, entornos educativos o procesadores personalizados, donde se requiere comprender y construir bloques funcionales de bajo nivel.
