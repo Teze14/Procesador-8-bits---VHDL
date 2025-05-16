@@ -1,0 +1,22 @@
+El módulo mem_datos representa la memoria RAM del procesador, utilizada para almacenar datos temporales durante la ejecución del programa. Es una memoria direccionable de 128 posiciones (7 bits de dirección), donde cada celda contiene un dato de 8 bits.
+
+Entradas:
+clk: Señal de reloj para sincronización de lectura/escritura.
+
+wr: Señal de escritura. Si está en alto ('1'), se habilita la escritura del dato en la dirección seleccionada.
+
+address: Dirección de 7 bits que selecciona la posición de memoria.
+
+data_in: Dato de entrada a ser escrito en memoria si wr = '1'.
+
+Salidas:
+data_out: Dato de salida leído desde la dirección especificada (válido cuando wr = '0').
+
+Funcionamiento:
+Si wr = '1': en el flanco positivo de clk, se almacena data_in en la dirección indicada por address.
+
+Si wr = '0': en cualquier ciclo, se puede leer el valor almacenado en la dirección seleccionada por address.
+
+Aplicación:
+Usada como área de almacenamiento temporal para variables del programa, resultados intermedios, buffers, etc. Es accedida mediante instrucciones LOAD_DIR_A/B y STORE_A/B.
+
