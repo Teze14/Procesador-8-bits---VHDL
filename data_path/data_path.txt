@@ -1,0 +1,25 @@
+El módulo data_path implementa el camino de datos de un procesador de arquitectura básica tipo Von Neumann. Su objetivo es gestionar el flujo interno de información entre registros, memoria, buses y la ALU, de acuerdo con las señales de control proporcionadas por la unidad de control (control_unit).
+
+📦 Componentes Internos:
+Registros: A, B, IR (registro de instrucción), PC (contador de programa), MAR (registro de direcciones), y CCR (registro de banderas).
+
+Buses: Bus1 y Bus2 permiten la interconexión flexible entre registros, la memoria y la ALU.
+
+ALU: Una ALU de 8 bits conectada en arquitectura bit-slice, capaz de realizar operaciones aritméticas y lógicas.
+
+Multiplexores: Controlados por Bus1_Sel y Bus2_Sel, permiten seleccionar la fuente de datos adecuada para cada operación.
+
+Unidades de control de carga (*_Load): Determinan cuándo actualizar los registros internos.
+
+🧩 Funcionalidad Principal:
+El data_path permite ejecutar instrucciones del tipo load, store, operaciones aritmético-lógicas, saltos y manipulaciones directas, siguiendo el flujo:
+
+Leer instrucción desde memoria.
+
+Cargar operandos (desde memoria o inmediato).
+
+Ejecutar operación en ALU.
+
+Escribir el resultado (registro, memoria o puerto).
+
+Este módulo es el núcleo operativo del procesador y responde directamente a las señales de control generadas por la FSM.
